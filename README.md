@@ -15,13 +15,7 @@ This tool synchronizes Jira issues assigned to you with a Things3 project. It pr
 ## Setup
 
 1. Clone this repository
-2. Copy `.env.example` to `.env`:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-3. Edit `.env` and fill in your details:
+2. Set the following environment variables:
    - `JIRA_URL`: Your Jira instance URL
    - `JIRA_USERNAME`: Your Jira email
    - `JIRA_TOKEN`: Your Jira API token (create one at <https://id.atlassian.com/manage/api-tokens>)
@@ -30,7 +24,6 @@ This tool synchronizes Jira issues assigned to you with a Things3 project. It pr
 4. Install dependencies:
 
    ```bash
-   go mod init jira2things3
    go mod tidy
    ```
 
