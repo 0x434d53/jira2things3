@@ -1,0 +1,33 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest  # Using macOS runner since this is a Things3 integration
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+
+    - name: Install dependencies
+      run: |
+        go mod init jira2things3
+        go mod tidy
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
+      env:
+        JIRA_URL: ${{ secrets.JIRA_URL }}
+        JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+        JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        THINGS_PROJECT: ${{ secrets.THINGS_PROJECT }} 
