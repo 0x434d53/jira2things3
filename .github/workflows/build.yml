@@ -21,7 +21,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        go mod init jira2things3
         go mod tidy
 
     - name: Build
