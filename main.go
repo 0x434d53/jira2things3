@@ -46,7 +46,6 @@ func createThingsTodo(title, notes, jiraKey string) error {
 		end tell
 	`, os.Getenv("THINGS_PROJECT"), jiraKey)
 
-	log.Printf("Executing AppleScript: %s", script)
 	checkCmd := exec.Command("osascript", "-e", script)
 
 	output, err := checkCmd.Output()
